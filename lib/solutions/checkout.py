@@ -36,7 +36,7 @@ def checkout(skus):
         if 'special_offers' in ITEMS[item]:
             required_quantity, discount = ITEMS[item]['special_offers']
 
-            if special_counter[item] >= required_quantity:
-                total += discount
+            number_of_discounts = special_counter[item] // required_quantity
+            total += (discount * number_of_discounts)
 
     return total

@@ -36,8 +36,9 @@ class TestHello(unittest.TestCase):
     def test_3_As_and_2_Bs(self):
         self.assertEquals(checkout('AAABB'), 175)
 
-    # def test_4_Bs(self):
-    #     self.assertEqual(checkout('BBBB'), 90)
+    # should give the discount multiple times if required
+    def test_4_Bs(self):
+        self.assertEqual(checkout('BBBB'), 90)
 
 
 if __name__ == '__main__':
