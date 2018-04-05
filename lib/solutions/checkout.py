@@ -1,10 +1,12 @@
 from collections import Counter
 
 ITEMS = {
-    'A': {'price': 50, 'special_offers': [(3, -20), (5, -50)]},
-    'B': {'price': 30, 'special_offers': [(2, -15)]},
-    'C': {'price': 20},
-    'D': {'price': 15}
+    'A': {'price': 50, 'special_offers': [{'min_quantity': 3, 'discount': -20},
+                                          {'min_quantity': 5, 'discount': -50}]},
+    'B': {'price': 30, 'special_offers': [{'min_quantity': 2, 'discount': -15}]},
+    'C': {'price': 20, 'special_offers': []},
+    'D': {'price': 15, 'special_offers': []},
+    'E': {'price': 40, 'special_offers': [{'min_quantity': 2, 'other_free': 'B'}]}
 }
 
 # 'AAA' 50, 100, 150 (should be 130) so minus 20 at end?
@@ -33,10 +35,14 @@ def checkout(skus):
     # now check the special offers
     for item in special_counter:
         # does this item have an specials?
-        if 'special_offers' in ITEMS[item]:
-            required_quantity, discount = ITEMS[item]['special_offers']
+        for offer in ITEMS[item]['special_offers']:
+            number_of_discounts = special_counter[item] // offer['min_quantity']
 
-            number_of_discounts = special_counter[item] // required_quantity
-            total += (discount * number_of_discounts)
+            if 'discount' in offer:
+                total += (offer['discount'] * number_of_discounts)
+
+            elif 'other_free' in offer:
+                if offer['other_free'] in skus:
+                    total = total - ITEMS[item]['price']
 
     return total
