@@ -40,11 +40,20 @@ class TestHello(unittest.TestCase):
     def test_4_Bs(self):
         self.assertEqual(checkout('BBBB'), 90)
 
-    def test_6_As(self):
-        self.assertEqual(checkout('AAAAAA'), 260)
+    def test_5_As(self):
+        self.assertEqual(checkout('AAAAA'), 200)
 
-    def test_loads_of_ABs(self):
-        self.assertEqual(checkout('ABCDCBAABCABBAAA'), 505)
+    def test_6_As(self):
+        self.assertEqual(checkout('AAAAAA'), 250)
+
+    # def test_loads_of_ABs(self):
+    #     self.assertEqual(checkout('ABCDCBAABCABBAAA'), 505)
+
+    def test_2_Es_B_is_free(self):
+        self.assertEqual(checkout('EEB'), 80)
+
+    def test_2_Es_B_is_free(self):
+        self.assertEqual(checkout('EEBB'), 110)
 
 
 if __name__ == '__main__':
