@@ -2,7 +2,7 @@ from collections import Counter
 
 ITEMS = {
     'A': {'price': 50, 'special_offers': [{'min_quantity': 3, 'discount': -20},
-                                          {'min_quantity': 5, 'discount': -50}]},
+                                          {'min_quantity': 5, 'discount': -30}]},
     'B': {'price': 30, 'special_offers': [{'min_quantity': 2, 'discount': -15}]},
     'C': {'price': 20, 'special_offers': []},
     'D': {'price': 15, 'special_offers': []},
