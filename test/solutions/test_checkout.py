@@ -56,7 +56,7 @@ class TestHello(unittest.TestCase):
         self.assertEqual(checkout('EEB'), 80)
 
     def test_2_Es_B_is_free(self):
-        self.assertEqual(checkout('EEBB'), 110)
+        self.assertEqual(checkout('EEBB'), 95)
 
 
 if __name__ == '__main__':
