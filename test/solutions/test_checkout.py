@@ -40,6 +40,12 @@ class TestHello(unittest.TestCase):
     def test_4_Bs(self):
         self.assertEqual(checkout('BBBB'), 90)
 
+    def test_6_As(self):
+        self.assertEqual(checkout('AAAAAA'), 260)
+
+    def test_loads_of_ABs(self):
+        self.assertEqual(checkout('ABCDCBAABCABBAAA'), 505)
+
 
 if __name__ == '__main__':
     unittest.main()
