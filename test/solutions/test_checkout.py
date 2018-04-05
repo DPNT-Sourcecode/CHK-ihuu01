@@ -46,6 +46,9 @@ class TestHello(unittest.TestCase):
     def test_6_As(self):
         self.assertEqual(checkout('AAAAAA'), 250)
 
+    def test_8_As(self):
+        self.assertEqual(checkout('AAAAAAAA'), 330)
+
     # def test_loads_of_ABs(self):
     #     self.assertEqual(checkout('ABCDCBAABCABBAAA'), 505)
 
