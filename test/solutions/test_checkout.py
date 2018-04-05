@@ -4,6 +4,14 @@ from lib.solutions.checkout import checkout
 
 
 class TestHello(unittest.TestCase):
+    def test_illegal_input(self):
+        self.assertEqual(checkout('a'), -1)
+        self.assertEqual(checkout('1'), -1)
+        self.assertEqual(checkout(' '), -1)
+
+    def test_empty_equals_zero(self):
+        self.assertEqual(checkout(''), 0)
+
     def test_1_A(self):
         self.assertEqual(checkout('A'), 50)
 
@@ -27,6 +35,9 @@ class TestHello(unittest.TestCase):
 
     def test_3_As_and_2_Bs(self):
         self.assertEquals(checkout('AAABB'), 175)
+
+    def test_4_Bs(self):
+        self.assertEqual(checkout('BB'), 90)
 
 
 if __name__ == '__main__':
