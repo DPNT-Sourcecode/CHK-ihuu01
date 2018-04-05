@@ -25,14 +25,13 @@ def checkout(skus):
 
     for item in skus:
         if item in ITEMS:
-            # check for special offers
-            # if 'special_offers' in ITEMS[item]:
-            #     quantity_required,
-
             # increment the total
             total += ITEMS[item]['price']
-
         else:
             return -1
+
+    # now check the special offers
+    for item in special_counter:
+        print(item)
 
     return total
