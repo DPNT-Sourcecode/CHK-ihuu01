@@ -37,7 +37,7 @@ class TestHello(unittest.TestCase):
         self.assertEquals(checkout('AAABB'), 175)
 
     def test_4_Bs(self):
-        self.assertEqual(checkout('BB'), 90)
+        self.assertEqual(checkout('BBBB'), 90)
 
 
 if __name__ == '__main__':
