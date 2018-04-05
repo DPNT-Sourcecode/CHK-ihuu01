@@ -1,10 +1,13 @@
+from collections import defaultdict
 
 ITEMS = {
-    'A': {'price': 50, 'special_offers': (3, 30)},
+    'A': {'price': 50, 'special_offers': (3, 130)},
     'B': {'price': 30, 'special_offers': (2, 45)},
     'C': {'price': 20},
     'D': {'price': 15}
 }
+
+# 'AAA' 50, 100, 150 (should be 130) so minus 20 at end?
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -18,6 +21,7 @@ def checkout(skus):
     :return: int, total amount of the cart, including special offers
     """
     total = 0
+    special_counter = defaultdict(int)
 
     for item in skus:
         if item in ITEMS:
