@@ -1,8 +1,8 @@
-from collections import defaultdict
+from collections import Counter
 
 ITEMS = {
-    'A': {'price': 50, 'special_offers': (3, 130)},
-    'B': {'price': 30, 'special_offers': (2, 45)},
+    'A': {'price': 50, 'special_offers': (3, -20)},
+    'B': {'price': 30, 'special_offers': (2, -15)},
     'C': {'price': 20},
     'D': {'price': 15}
 }
@@ -21,7 +21,7 @@ def checkout(skus):
     :return: int, total amount of the cart, including special offers
     """
     total = 0
-    special_counter = defaultdict(int)
+    special_counter = Counter(skus)
 
     for item in skus:
         if item in ITEMS:
