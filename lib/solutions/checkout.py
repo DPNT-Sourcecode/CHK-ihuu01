@@ -43,7 +43,7 @@ def checkout(skus):
 
             elif 'other_free' in offer:
                 if offer['other_free'] in skus:
-                    other_free = ITEMS[item]['other_free']
+                    other_free = offer['other_free']
                     total = total - ITEMS[other_free]['price']
 
     return total
