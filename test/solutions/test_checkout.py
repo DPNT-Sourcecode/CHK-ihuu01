@@ -53,7 +53,7 @@ class TestHello(unittest.TestCase):
         self.assertEqual(checkout('AAAAAAAAA'), 380)
 
     def test_loads_of_ABs(self):
-        self.assertEqual(checkout('ABCDCBAABCABBAAA'), 505)
+        self.assertEqual(checkout('ABCDCBAABCABBAAA'), 525)
 
     def test_2_Es_B_is_free(self):
         self.assertEqual(checkout('EEB'), 80)
