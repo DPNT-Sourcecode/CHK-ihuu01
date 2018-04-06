@@ -57,7 +57,8 @@ def checkout(skus):
                     # make sure we have the min required items
                     if counter[item] >= offer['min_quantity']:
                         other_free = offer['other_free']
-                        free_offer = ITEMS[other_free]['price'] * number_of_offers
+                        # is this full price the correct value? what if we used a multi price?
+                        free_offer = number_of_offers * ITEMS[other_free]['price']
 
         # add any remaining qty as full price to the line_total
         line_total += qty * ITEMS[item]['price']
