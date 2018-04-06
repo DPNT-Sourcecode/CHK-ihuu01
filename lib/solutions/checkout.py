@@ -10,6 +10,7 @@ ITEMS = {
 }
 
 # 'AAA' 50, 100, 150 (should be 130) so minus 20 at end?
+# 'AAAAAAAAA' (9as) 200 + 130 + 50
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -41,12 +42,14 @@ def checkout(skus):
 
             if 'price' in offer:
                 # how many can we get of the biggest offer
-                number_of_discounts = qty // offer['min_quantity']
+                number_of_offers = qty // offer['min_quantity']
 
-                # how many are left...
+                # how many are left, put in qty for next offer...
+                number_of_items_in_offer = number_of_offers * offer['min_quantity']
+                qty -= number_of_items_in_offer
 
-            #
-
+                # update the line total
+                line_total += number_of_offers * offer['price']
 
             elif 'other_free' in offer:
                 if offer['other_free'] in skus:
