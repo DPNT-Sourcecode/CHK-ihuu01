@@ -1,9 +1,9 @@
 from collections import Counter
 
 ITEMS = {
-    'A': {'price': 50, 'special_offers': [{'min_quantity': 3, 'discount': -20},
-                                          {'min_quantity': 5, 'discount': -30}]},
-    'B': {'price': 30, 'special_offers': [{'min_quantity': 2, 'discount': -15}]},
+    'A': {'price': 50, 'special_offers': [{'min_quantity': 3, 'price': 200},
+                                          {'min_quantity': 5, 'price': 130}]},
+    'B': {'price': 30, 'special_offers': [{'min_quantity': 2, 'price': 45}]},
     'C': {'price': 20, 'special_offers': []},
     'D': {'price': 15, 'special_offers': []},
     'E': {'price': 40, 'special_offers': [{'min_quantity': 2, 'other_free': 'B'}]}
@@ -23,27 +23,38 @@ def checkout(skus):
     :return: int, total amount of the cart, including special offers
     """
     total = 0
-    special_counter = Counter(skus)
+    counter = Counter(skus)
 
-    for item in skus:
-        if item in ITEMS:
-            # increment the total
-            total += ITEMS[item]['price']
-        else:
+    # got through the offers (biggest first), and calculate the line total, and any free offers...
+    for item in counter:
+        if item not in ITEMS:
             return -1
 
-    # now check the special offers
-    for item in special_counter:
-        # does this item have an specials?
-        for offer in ITEMS[item]['special_offers']:
-            number_of_discounts = special_counter[item] // offer['min_quantity']
+        line_total = 0
+        free_offer = 0
+        qty = counter[item]
 
-            if 'discount' in offer:
-                total += (offer['discount'] * number_of_discounts)
+        ordered_offers = sorted(ITEMS[item]['special_offers'], key=lambda k: (k['min_quantity']), reverse=True)
+
+        # does this item have an specials?
+        for offer in ordered_offers:
+
+            if 'price' in offer:
+                # how many can we get of the biggest offer
+                number_of_discounts = qty // offer['min_quantity']
+
+                # how many are left...
+
+            #
+
 
             elif 'other_free' in offer:
                 if offer['other_free'] in skus:
                     other_free = offer['other_free']
-                    total = total - ITEMS[other_free]['price']
+                    free_offer = total - ITEMS[other_free]['price']
+
+        # add the line total, and the free offers to the checkout total
+        total += line_total
+        total -= free_offer
 
     return total
