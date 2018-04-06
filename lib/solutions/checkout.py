@@ -53,7 +53,8 @@ def checkout(skus):
 
             elif 'other_free' in offer:
                 if offer['other_free'] in counter:
-                    if counter[offer['other_free']] >= offer['min_quantity']:
+                    # make sure we have the min required items
+                    if counter[item] >= offer['min_quantity']:
                         other_free = offer['other_free']
                         free_offer = ITEMS[other_free]['price']
 
