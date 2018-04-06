@@ -52,9 +52,10 @@ def checkout(skus):
                 line_total += number_of_offers * offer['price']
 
             elif 'other_free' in offer:
-                if offer['other_free'] in skus:
-                    other_free = offer['other_free']
-                    free_offer = ITEMS[other_free]['price']
+                if offer['other_free'] in counter:
+                    if counter[offer['other_free']] >= offer['min_quantity']:
+                        other_free = offer['other_free']
+                        free_offer = ITEMS[other_free]['price']
 
         # add any remaining qty as full price to the line_total
         line_total += qty * ITEMS[item]['price']
