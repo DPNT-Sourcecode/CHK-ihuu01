@@ -56,13 +56,8 @@ def checkout(skus):
                 if offer['other_free'] in counter:
                     # make sure we have the min required items
                     if counter[item] >= offer['min_quantity']:
-                        # remove the items we have made free from skus?
                         other_free = offer['other_free']
-                        # we only want to move 1 of the other_free, so replace with count 1
-                        # skus = skus.replace(other_free, '', 1)
-                        # this will only work if we remove this char first, before we have worked out the lines total!!
-
-                        free_offer = ITEMS[other_free]['price']
+                        free_offer = ITEMS[other_free]['price'] * number_of_offers
 
         # add any remaining qty as full price to the line_total
         line_total += qty * ITEMS[item]['price']
