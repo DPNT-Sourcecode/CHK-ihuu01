@@ -39,6 +39,7 @@ def checkout(skus):
 
         # does this item have an specials?
         for offer in ordered_offers:
+            print('offer: {}'.format(offer))
 
             if 'price' in offer:
                 # how many can we get of the biggest offer
@@ -50,6 +51,8 @@ def checkout(skus):
 
                 # update the line total
                 line_total += number_of_offers * offer['price']
+
+                print('adding offer price: {}'.format(line_total))
 
             elif 'other_free' in offer:
                 if offer['other_free'] in skus:
