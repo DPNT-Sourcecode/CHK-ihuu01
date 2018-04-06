@@ -39,11 +39,10 @@ def checkout(skus):
 
         # does this item have an specials?
         for offer in ordered_offers:
+            # how many can we get of the biggest offer
+            number_of_offers = qty // offer['min_quantity']
 
             if 'price' in offer:
-                # how many can we get of the biggest offer
-                number_of_offers = qty // offer['min_quantity']
-
                 # how many are left, put in qty for next offer...
                 number_of_items_in_offer = number_of_offers * offer['min_quantity']
                 qty -= number_of_items_in_offer
@@ -55,6 +54,9 @@ def checkout(skus):
                 if offer['other_free'] in counter:
                     # make sure we have the min required items
                     if counter[item] >= offer['min_quantity']:
+                        # remove the items we have made free from the counter
+                        
+
                         other_free = offer['other_free']
                         free_offer = ITEMS[other_free]['price']
 
