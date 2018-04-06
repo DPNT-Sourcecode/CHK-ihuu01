@@ -61,6 +61,15 @@ class TestHello(unittest.TestCase):
     def test_2_Es_B_is_free(self):
         self.assertEqual(checkout('EEBB'), 95)
 
+    def test_ABCDE(self):
+        self.assertEquals(checkout('ABCDE'), 155)
+
+    def test_EEEEBB(self):
+        self.assertEquals(checkout('EEEEBB'), 160)
+
+    def test_BEBEEE(self):
+        self.assertEquals(checkout('BEBEEE'), 160)
+
 
 if __name__ == '__main__':
     unittest.main()
