@@ -60,7 +60,11 @@ def checkout(skus):
                     free_offer = total - ITEMS[other_free]['price']
 
         # add any remaining qty as full price to the line_total
+        print('full price {}: {}'.format(item, qty))
         line_total += qty * ITEMS[item]['price']
+
+        print('line price: {}'.format(line_total))
+        print('free offer: {}'.format(free_offer))
 
         # add the line total, and the free offers to the checkout total
         total += line_total
