@@ -1,8 +1,8 @@
 from collections import Counter
 
 ITEMS = {
-    'A': {'price': 50, 'special_offers': [{'min_quantity': 3, 'price': 200},
-                                          {'min_quantity': 5, 'price': 130}]},
+    'A': {'price': 50, 'special_offers': [{'min_quantity': 3, 'price': 130},
+                                          {'min_quantity': 5, 'price': 200}]},
     'B': {'price': 30, 'special_offers': [{'min_quantity': 2, 'price': 45}]},
     'C': {'price': 20, 'special_offers': []},
     'D': {'price': 15, 'special_offers': []},
